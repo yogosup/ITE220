@@ -1,0 +1,48 @@
+<html>
+<!-- Pranjala Singh -->
+<head>
+	<title>Weather</title>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/app.js"></script>
+</head>
+<body bgcolor="#00FFFF">
+
+<a id='city'href="#">Washington DC</a>
+<a id='city'href="#">Florida</a>
+<a id='city'href="#">California</a>
+
+	<div id="container"></div>
+	<button onclick=show('cel')>Celcius</button>
+	
+	<br><p id='cel' style='visibility:hidden;'>Show Result in Celcius</p>
+		<script type="text/javascript">
+	function show(id){
+		document.getElementById(id).style.color='blue';
+		document.getElementById(id).style.visibility='visible';
+	}
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+    $("a").click(function(e){
+    	e.preventDefault();
+		var city=this.text.toLowerCase();
+		$.ajax({
+	type:'Get',
+	url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=93e6c9ebb4bc4f59c5b311f6f47ad4d2',
+	success: function(data){
+		//console.log(data.name);
+		var temp = data.main.temp;
+		var c = temp - 273;
+		$("#container").html(data.name+" "+temp+" Kelvin   <br>");
+		$("#cel").html(data.name+" "+c.toFixed(2)+" degree celcius   <br>");
+		
+	}
+	
+});
+       
+    });
+});</script>
+
+</body>
+</html>
