@@ -4,7 +4,7 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<body>
+<body background="ggirls.jpg">
 	<div><?php
 $selectedseats =$_POST["seats"];
 echo "You bought ".count($selectedseats)." <br>";
